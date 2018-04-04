@@ -1,7 +1,5 @@
 @extends('main')
-
 @section('intro')
-
   <div class="intro-container">
     <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
 
