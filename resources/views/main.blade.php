@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>BizPage Bootstrap Template</title> <!--CAMBIAR EL TITULO POR CADA PAGINA-->
+  <title>Bienvenidos a Bolivia</title> <!--CAMBIAR EL TITULO POR CADA PAGINA-->
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -39,11 +39,11 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
+          <li class="menu-active"><a href="#intro">Principal</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#services">Eventos</a></li>
+          <li><a href="#portfolio">Empresas</a></li>
+          <li><a href="#team">Noticias</a></li>
           <li class="menu-has-children"><a href="">Drop Down</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -52,7 +52,7 @@
               <li><a href="#">Drop Down 5</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Contactos</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -72,8 +72,8 @@
           <div class="carousel-item active" style="background-image: url('img/intro-carousel/1.jpg');">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2>We are DESTINOS </h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <h2>Oruro Capital del Folklore </h2>
+                <p>El Carnaval de Oruro es la máxima representación de los carnavales en Bolivia, “Obra Maestra del Patrimonio Oral e Intangible de la Humanidad” (Unesco). A lo largo del carnaval participan más de 48 conjuntos folklóricos que son distribuidos en 18 especialidades de danzas que reúnen de distintas partes de Bolivia y que realizan su peregrinación hacia el Santuario del Socavón cada sábado de carnaval en la tradicional “Entrada”</p>
                 <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
               </div>
             </div>
