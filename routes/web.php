@@ -13,10 +13,17 @@
 
 Route::get('/', function () {
     return view('main');
-});
+	});
 Route::get('/welcome', function () {
     return view('pages.welcome');
-});
-Auth::routes();
+	});
 
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('vendor/add', function(){
+    //view
+    return view::make('add');
+});
+
+

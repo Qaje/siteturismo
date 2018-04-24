@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class Wokflowpage extends Migration
 {
     public function up()
-    {
+    {           
         Schema::create('users',function(Blueprint $table){
             $table->engine = 'InnoDB';
             $table->increments('id');   
@@ -18,7 +18,23 @@ class Wokflowpage extends Migration
             $table->string('reside',200);
             $table->string('email',200)->unique();
             $table->date('date_born', 100);
-            $table->string('geolocalization', 100);
+            $table->string('photo', 100);
+            $table->datetime('last_modification');
+            $table->string('cellnumber',10);
+            $table->timestamps();
+        });
+        //        responsable
+        Schema::create('liable',function(Blueprint $table){
+            $table->engine = 'InnoDB';
+            $table->increments('id');   
+            $table->string('nickname',200);
+            $table->string('first_name',100);
+            $table->string('last_name',100);
+            $table->boolean('status');
+            $table->string('ci',20);
+            $table->string('ci_issued',20);
+            $table->string('email',200);
+            $table->date('date_born', 100);
             $table->string('photografic', 100);
             $table->datetime('last_modification');
             $table->string('cellnumber',10);
@@ -34,7 +50,9 @@ class Wokflowpage extends Migration
             $table->string('recomendation', 100);
             $table->string('city', 100);
             $table->string('province', 100);
-            $table->string('geolocalization', 100);
+            $table->string('geolocalization_photo', 100);
+            $table->decimal('long', 10, 7);
+            $table->decimal('lat', 10, 7);
             $table->string('photografic', 100);
             $table->timestamps();
         });
@@ -56,7 +74,7 @@ class Wokflowpage extends Migration
             $table->date('publication_date')->unsigned();
             $table->string('title',150);
             $table->string('content', 500);
-            $table->string('how_to_come', 100); //hospedae
+            $table->string('how_to_come', 100); 
             $table->string('recomendation', 100);
             $table->string('geolocalization', 100);
             $table->string('photorgrafic', 100);
@@ -100,7 +118,6 @@ class Wokflowpage extends Migration
                 $table->increments('id');
                 $table->string('name',100);
                 $table->string('geolocalization',200);
-                //$table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
         });
         Schema::create('cities',function(Blueprint $table){
                 $table->engine = 'InnoDB';
@@ -155,30 +172,28 @@ class Wokflowpage extends Migration
                 $table->string('name_reasonsocial',200);
                 $table->string('nit',100);
                 $table->boolean('status');
-                $table->string('direccion',200);
-                $table->string('contact',200);
                 $table->string('email_siteweb',200);
-                $table->string('city', 100);
-                $table->string('province', 100);
-                $table->string('geolocalization', 100);
                 $table->string('photografic', 100);
                 $table->datetime('last_modification');
                 $table->string('observation',500);
                 $table->timestamps();
             });
-            Schema::create('turistic_companies_turistic_type_companies', function (Blueprint $table) {
-                $table->integer('turistic_company_id')->unsigned();
-                $table->integer('turistic_type_company_id')->unsigned();
-                $table->foreign('turistic_company_id')
-                      ->references('id')
-                      ->on('turistic_companies')
-                      ->onDelete('cascade');      
-                $table->foreign('turistic_type_company_id')
-                      ->references('id')
-                      ->on('turistic_types_companies')
-                      ->onDelete('cascade');
-                $table->primary(['turistic_company_id','turistic_type_company_id']);
-            });
+        Schema::create('offices',function(Blueprint $table){
+                $table->engine = 'InnoDB';
+                $table->increments('id');
+                $table->string('direccion',200);
+                $table->string('description',200);
+                $table->integer('country');
+                $table->integer('city');
+                $table->integer('province',);
+                $table->string('office_photo',100);
+                $table->string('contact',200);
+                $table->string('geolocalization',100);
+                $table->decimal('long', 10, 7);
+                $table->decimal('lat', 10, 7);
+                
+        });
+
         Schema::create('visitors',function(Blueprint $table){
                 $table->engine = 'InnoDB';
                 $table->increments('id');
@@ -235,9 +250,24 @@ class Wokflowpage extends Migration
                       ->onDelete('cascade');
                 $table->primary(['user_id','role_id']);
             });
+            
+        Schema::create('turistic_company_offices', function (Blueprint $table) {
+                $table->integer('turistic_company_id')->unsigned();
+                $table->integer('office_id')->unsigned();
+                $table->foreign('turistic_company_id')
+                      ->references('id')
+                      ->on('turistic_companies')
+                      ->onDelete('cascade');      
+                $table->foreign('office_id')
+                      ->references('id')
+                      ->on('offices')
+                      ->onDelete('cascade');
+                $table->primary(['turistic_company_id','office_id']);
+            });
     }
     public function down()
     {
+        Schema::DropIfExists('liable');
         Schema::DropIfExists('users');
         Schema::DropIfExists('roles');
         Schema::DropIfExists('permissions');
@@ -249,11 +279,13 @@ class Wokflowpage extends Migration
         Schema::DropIfExists('events');
         Schema::DropIfExists('touristic_guides');
         Schema::DropIfEXists('categories');
-        Schema::DropIFExists('turistic_types_company');
         Schema::DropIfExists('turistic_companies');
+        Schema::DropIfExists('offices');
         Schema::DropIfExists('visitors');
         Schema::DropIfExists('cities');
         Schema::DropIfExists('countries');
+        Schema::DropIfExists('turistic_company_offices');
+        Schema::DropIFExists('turistic_types_company');
         Schema::DropIfExists('categories_turistic_type_companies');
     }
 }
