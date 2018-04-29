@@ -21,9 +21,13 @@ Route::get('/welcome', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('vendor/add', function(){
+//AdminLTE
+//Route::get('vendor/add', function(){
     //view
-    return view::make('add');
-});
+//    return view::make('add');
+//});
 
+Route::get('admin', function () {
+    return view('auth.master');
+});
 
