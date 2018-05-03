@@ -17,17 +17,19 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('pages.welcome');
 	});
-
-Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-//AdminLTE
-//Route::get('vendor/add', function(){
-    //view
-//    return view::make('add');
-//});
 
-Route::get('admin', function () {
-    return view('auth.master');
+Route::group(['middleware' => 'web'],function(){
+
+	Route::get('admin', function () {
+	    return view('auth.master');
+	});
+	Route::get('admin/register',function(){
+		return view('auth.register');
+	});
+
 });
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');

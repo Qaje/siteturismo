@@ -11,12 +11,13 @@ class Wokflowpage extends Migration
         Schema::create('users',function(Blueprint $table){
             $table->engine = 'InnoDB';
             $table->increments('id');   
-            $table->string('last_name',200);
-            $table->string('first_name',100);
-            $table->boolean('status');
-            $table->string('ci_dni_id',20);
-            $table->string('reside',200);
+            $table->string('name',200);
+            $table->string('nick_name',200);
             $table->string('email',200)->unique();
+            $table->string('password',200);
+            $table->string('avatar')->default('default.jpg');
+            $table->boolean('status');
+            $table->string('reside',200);
             $table->date('date_born', 100);
             $table->string('photo', 100);
             $table->datetime('last_modification');
@@ -27,9 +28,7 @@ class Wokflowpage extends Migration
         Schema::create('liables',function(Blueprint $table){
             $table->engine = 'InnoDB';
             $table->increments('id');   
-            $table->string('nickname',200);
-            $table->string('first_name',100);
-            $table->string('last_name',100);
+            $table->string('name',200);
             $table->boolean('status');
             $table->string('ci',20);
             $table->string('ci_issued',20);
@@ -106,19 +105,19 @@ class Wokflowpage extends Migration
             $table->timestamps();
         });
         Schema::create('touristic_guides',function(Blueprint $table){
-                $table->engine = 'InnoDB';
-                $table->increments('id');
-                $table->string('name',200);
-                $table->string('direccion',200);
-                $table->string('contact',20);
-                $table->string('email_siteweb',40);
-                $table->string('city', 100);
-                $table->string('province', 100);
-                $table->string('geolocalization_photo',100);
-                $table->decimal('long', 10, 7);
-                $table->decimal('lat', 10, 7);
-                $table->integer('votes');
-                $table->timestamps();
+            $table->engine = 'InnoDB';
+            $table->increments('id');
+            $table->string('name',200);
+            $table->string('direccion',200);
+            $table->string('contact',20);
+            $table->string('email_siteweb',40);
+            $table->string('city', 100);
+            $table->string('province', 100);
+            $table->string('geolocalization_photo',100);
+            $table->decimal('long', 10, 7);
+            $table->decimal('lat', 10, 7);
+            $table->integer('votes');
+            $table->timestamps();
             });
         
         Schema::create('countries',function(Blueprint $table){
