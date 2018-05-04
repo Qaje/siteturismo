@@ -17,12 +17,12 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('pages.welcome');
 	});
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 Route::group(['middleware' => 'web'],function(){
 	
-	Route::get('admin', function () {
+	Route::get('admins', function () {
 	    return view('auth.master');
 	});
 	Route::get('admin/register',function(){
@@ -33,3 +33,6 @@ Route::group(['middleware' => 'web'],function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin', 'AdminController@index');
+

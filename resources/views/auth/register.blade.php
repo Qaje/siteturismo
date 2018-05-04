@@ -24,19 +24,6 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="nick_name" class="col-md-4 col-form-label text-md-right">{{ __('Nick_Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="nick_name" type="text" class="form-control{{ $errors->has('nick_name') ? ' is-invalid' : '' }}" name="nick_name" value="{{ old('nick_name') }}" required autofocus>
-
-                                @if ($errors->has('nick_name'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('nick_name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

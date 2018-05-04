@@ -8,22 +8,21 @@ class Wokflowpage extends Migration
 {
     public function up()
     {           
-        Schema::create('users',function(Blueprint $table){
-            $table->engine = 'InnoDB';
+        /*Schema::create('users',function(Blueprint $table){
+            //$table->engine = 'InnoDB';
             $table->increments('id');   
-            $table->string('name',200);
-            $table->string('nick_name',200);
-            $table->string('email',200)->unique();
-            $table->string('password',200);
+            $table->string('name');
+            $table->string('nick_name');
+            $table->string('email')->unique();
+            $table->string('password',60);
             $table->string('avatar')->default('default.jpg');
-            $table->boolean('status');
-            $table->string('reside',200);
-            $table->date('date_born', 100);
-            $table->string('photo', 100);
-            $table->datetime('last_modification');
-            $table->string('cellnumber',10);
+            $table->boolean('status')->default('true');
+            $table->string('reside')->default('Bolivia');
+            $table->date('date_born');
+            $table->string('cellnumber',20)->default('591');
+           $table->rememberToken();
             $table->timestamps();
-        });
+        });*/
         //        responsable
         Schema::create('liables',function(Blueprint $table){
             $table->engine = 'InnoDB';
@@ -337,7 +336,7 @@ class Wokflowpage extends Migration
     public function down()
     {
         Schema::DropIfExists('liables');
-        Schema::DropIfExists('users');
+        //Schema::DropIfExists('users');
         Schema::DropIfExists('roles');
         Schema::DropIfExists('permissions');
         Schema::DropIfExists('role_user');
